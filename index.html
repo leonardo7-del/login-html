@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Corporativo — Meridian Group</title>
+
+    <!-- ===================== Fuentes ===================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+
+    <!-- ===================== Iconos ===================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ===================== Fondo ===================== -->
+    <div class="bg-layer" aria-hidden="true"></div>
+    <div class="grid-pattern" aria-hidden="true"></div>
+    <div class="diagonal-lines" aria-hidden="true"></div>
+
+    <!-- ===================== Toasts ===================== -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!--
+    =============================================================
+                      ESTRUCTURA (HTML)
+    =============================================================
+    -->
+    <main class="login-container">
+
+        <!-- Panel izquierdo: Marca -->
+        <aside class="brand-panel" aria-label="Información corporativa">
+            <div class="geo-shape" aria-hidden="true"></div>
+            <div class="geo-shape" aria-hidden="true"></div>
+            <div class="geo-shape" aria-hidden="true"></div>
+            <div class="geo-shape" aria-hidden="true"></div>
+
+            <div class="brand-logo">
+                <div class="logo-icon">M</div>
+                <div class="logo-text">Meridian <span>Group</span></div>
+            </div>
+
+            <div class="brand-content">
+                <h2>Gestiona con <em>precisión</em>,<br>ejecuta con <em>certeza</em></h2>
+                <p>Plataforma de gestión empresarial. Accede a dashboards, reportes financieros y herramientas de colaboración desde un punto de entrada unificado.</p>
+            </div>
+
+            <div class="brand-stats">
+                <div class="stat-item">
+                    <div class="stat-value">12K+</div>
+                    <div class="stat-label">Empresas</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">99.9%</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">256-bit</div>
+                    <div class="stat-label">Encriptación</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Panel derecho: Formulario -->
+        <section class="form-panel" aria-label="Formulario de inicio de sesión">
+            <div class="form-header">
+                <h1>Iniciar sesión</h1>
+                <p>Usa tus credenciales corporativas o <a href="#" id="ssoLink">conecta via SSO</a></p>
+            </div>
+
+            <form id="loginForm" novalidate autocomplete="on">
+                <!-- Correo -->
+                <div class="input-group" id="emailGroup">
+                    <label for="email">Correo corporativo</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-envelope field-icon"></i>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="nombre@meridian.com"
+                            autocomplete="email"
+                            required
+                            aria-describedby="emailError"
+                        >
+                    </div>
+                    <div class="error-msg" id="emailError" role="alert">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span></span>
+                    </div>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="input-group" id="passwordGroup">
+                    <label for="password">Contraseña</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock field-icon"></i>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Ingresa tu contraseña"
+                            autocomplete="current-password"
+                            required
+                            aria-describedby="passwordError"
+                        >
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            id="togglePassword"
+                            aria-label="Mostrar contraseña"
+                            tabindex="0"
+                        >
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="error-msg" id="passwordError" role="alert">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span></span>
+                    </div>
+                </div>
+
+                <!-- Opciones -->
+                <div class="form-options">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="rememberMe" name="remember">
+                        <div class="custom-checkbox">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <span>Recordar sesión</span>
+                    </label>
+                    <a href="#" class="forgot-link" id="forgotLink">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <!-- Botón -->
+                <button type="submit" class="btn-login" id="btnLogin">
+                    <div class="btn-content">
+                        <span class="btn-text">Acceder al portal</span>
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+            </form>
+
+            <!-- Separador -->
+            <div class="divider">
+                <span>o continuar con</span>
+            </div>
+
+            <!-- Sociales -->
+            <div class="social-buttons">
+                <button type="button" class="btn-social" id="btnMicrosoft" aria-label="Iniciar sesión con Microsoft">
+                    <i class="fa-brands fa-microsoft"></i>
+                    Microsoft
+                </button>
+                <button type="button" class="btn-social" id="btnGoogle" aria-label="Iniciar sesión con Google">
+                    <i class="fa-brands fa-google"></i>
+                    Google
+                </button>
+            </div>
+
+            <!-- Seguridad -->
+            <div class="security-badge">
+                <i class="fa-solid fa-shield-halved"></i>
+                Conexión cifrada con TLS 1.3
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
